@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Wiki Offline Demo</title>
+  <meta name="wiki offline demo" content="View Wiki articles offline!">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="./styles.css" /> -->
+  <!-- <script src="/app.js" type="module" defer></script> -->
+</head>
+
+<body>
+
+  <header class="header--row1">
+    <a class="title" href="/">Wiki Offline Demo</a>
+    <button id="search-btn" class="search-btn header-icon">
+      <svg viewBox="0 0 24 24">
+        <title>Search</title>
+        <path d="M15.5 14h-.8l-.3-.3c1-1 1.6-2.6 1.6-4.2C16 6 13 3 9.5 3S3 6 3 9.5 6 16 9.5 16c1.6 0 3-.6 4.2-1.6l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0C7 14 5 12 5 9.5S7 5 9.5 5 14 7 14 9.5 12 14 9.5 14z"></path>
+      </svg>
+    </button>
+    <div id="search-bar" class="search-bar">
+      <button id="back-btn" class="back-btn">
+        <svg viewBox="0 0 24 24">
+          <title>Back</title>
+          <path d="M20 11H7.8l5.6-5.6L12 4l-8 8 8 8 1.4-1.4L7.8 13H20v-2z"></path>
+        </svg>
+      </button>
+      <form id="searchForm">
+        <input id="searchInput" autofocus type="search" class="search" placeholder="Search">
+      </form>
+    </div>
+  </header>
+
+  <header class="header--row2">
+    <div class="header--tab active" id="tab--home" data-section="home">
+      <svg xmlns="http://www.w3.org/2000/svg" class="header--icon" viewBox="0 0 24 24">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </svg>
+      <span>Home</span>
+    </div>
+    <div class="header--tab" id="tab--cached" data-section="cached">
+      <svg xmlns="http://www.w3.org/2000/svg" class="header--icon" viewBox="0 0 24 24">
+        <path fill="none" d="M0 0h24v24H0z" />
+        <path d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zM11.48 20v-6.26H8L13 4v6.26h3.35L11.48 20z" />
+      </svg>
+      <span>Cached</span>
+    </div>
+    <div class="header--tab" id="tab--settings" data-section="settings">
+      <svg xmlns="http://www.w3.org/2000/svg" class="header--icon" viewBox="0 0 20 20">
+        <path fill="none" d="M0 0h20v20H0V0z" />
+        <path d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z" />
+      </svg>
+      <span>Settings</span>
+    </div>
+  </header>
+
+  <main id="content">
+
+    <section id="section--home" data-section="home" hidden>
+      <h2>Welcome</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt mauris sed purus feugiat dignissim. Phasellus tincidunt scelerisque ullamcorper. </p>
+      <p>Nullam aliquet tellus ut felis dapibus volutpat. Ut suscipit sagittis lacus in egestas. Vestibulum vitae felis vel sapien tempus interdum. Etiam pharetra, arcu auctor cursus mattis, diam leo condimentum metus, vitae facilisis purus eros eu dolor.</p>
+    </section>
+
+    <section id="section--cached" data-section="cached" hidden>
+      <h2>Cached Articles</h2>
+      <div id="articleHistoryContainer"></div>
+    </section>
+
+    <section id="section--settings" data-section="settings" hidden>
+      <h2>Settings</h2>
+      <div class="row">
+        <div class="row--field">Network Status:</div>
+        <div class="row--value">
+          <span id="networkStatus"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row--field">Bytes Used:</div>
+        <div class="row--value">
+          <span id="bytesUsed"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row--field">Bytes Available:</div>
+        <div class="row--value">
+          <span id="bytesAvailable"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row--field">Storage Used:</div>
+        <div class="row--value">
+          <span id="storageUsage"></span>
+        </div>
+      </div>
+      <div class="row">
+        <button id="clearCacheBtn">Clear Caches</button>
+      </div>
+    </section>
+
+    <section id="section--loader" data-section="loader" class="active">
+      <div class="loader"></div>
+    </section>
+
+    <section id="section--article" data-section="main" hidden></section>
+
+  </main>
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+
+  </script>
+
+</body>
+
+</html>
