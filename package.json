@@ -30,7 +30,7 @@
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.6.0",
     "mocha": "^6.1.4",
-    "postcss": "^7.0.16",
+    "postcss": "^7.0.36",
     "postcss-custom-properties": "^8.0.10",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
