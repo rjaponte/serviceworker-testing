@@ -43,7 +43,7 @@
     "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "node-fetch": "^2.5.0",
     "workbox-core": "^4.3.1",
     "workbox-expiration": "^4.3.1",
